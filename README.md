@@ -15,3 +15,5 @@ The firmware was written in C++ using the standard Wire.h and Servo.h libraries.
 The MPU6050 was initialized using the I2C Protocol, by writing to and reading from its registers.
 Tilt is detected using trigonometry (the atan2 function) and raw x,y,z accelerometer data is printed
 alongisde the offset, base angle, and final servo angle.
+
+![IMG_6276](https://github.com/user-attachments/assets/dccb23ad-61e9-43b2-b662-7dbfd02d6747)
