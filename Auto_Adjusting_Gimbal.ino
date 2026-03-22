@@ -11,7 +11,8 @@ int16_t accelerometer_z;
 const int ACCEL_XOUT_H = 0x3B;
 const int PWR_MGMT_1 = 0x6B;
 
-int angle=90;
+int baseAngle=90;
+int angle;
 int offset=0;
 
 Servo myServo;
@@ -34,7 +35,13 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  myServo.write(angle);
+  if (Serial.available() >0){ //Checks if there are bytes to read in the serial monitor.
+    int newAngle = Serial.parseInt();
+    if (newAngle>0 && newAngle <180){
+      baseAngle= newAngle;
+    }
+  }
+
   Wire.beginTransmission(address);
   Wire.write(ACCEL_XOUT_H); //Starting with register 0x3B.
   Wire.endTransmission(false); //sends a restart condition
@@ -47,25 +54,28 @@ void loop() {
   Serial.print("x = ");
   Serial.print(accelerometer_x); //printing the raw values
 
-  Serial.print("|  y = ");
+  Serial.print(" |  y = ");
   Serial.print(accelerometer_y);
 
-  Serial.print("|  z = ");
+  Serial.print(" |  z = ");
   Serial.print(accelerometer_z);
 
 
   offset = atan2(accelerometer_y, accelerometer_z)*(180)/PI; //atan2 returns angle in radians. Takes care of the sign and divide by zero problem.
   
-  angle = 90+offset;
+  angle = baseAngle+offset;
   angle = constrain(angle, 0,180); //preventing offset from going beyond 180/
 
   
   myServo.write(angle);
 
-  Serial.print("| angle = ");
+  Serial.print(" | baseAngle = ");
+  Serial.print(baseAngle);
+
+  Serial.print(" | angle = ");
   Serial.print(angle);
 
-  Serial.print("| offset = ");
+  Serial.print(" | offset = ");
   Serial.println(offset);
 
   delay(100);
