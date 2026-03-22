@@ -16,4 +16,4 @@ The MPU6050 was initialized using the I2C Protocol, by writing to and reading fr
 Tilt is detected using trigonometry (the atan2 function) and raw x,y,z accelerometer data is printed
 alongisde the offset, base angle, and final servo angle.
 
-![IMG_6276](https://github.com/user-attachments/assets/dccb23ad-61e9-43b2-b662-7dbfd02d6747)
+<img src="https://mail.google.com/mail/u/1?ui=2&ik=e60e2a3b5b&attid=0.1&permmsgid=msg-a:r4939076501611912157&th=19d14521ef514e31&view=fimg&fur=ip&permmsgid=msg-a:r4939076501611912157&sz=s0-l75-ft&attbid=ANGjdJ_gxQWVU8_rwQyaS2pSELjPKeH9jUUEErxn4WUSEKn8GVReIYi3ZZFoWam0A172weO4CAwfvisIxmamyrnQM4kuRf6vRVXy5HPCYBA5DBlFwwZbzuP30dYDrMg&disp=emb&realattid=842A31ED-C903-4440-B6B8-C6C00816E4FC&zw" width="600">
